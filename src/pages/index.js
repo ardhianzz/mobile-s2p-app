@@ -1,11 +1,7 @@
-import Splash from "./Splash";
 import LoginPage from "./Login";
-import WelcomeAuth from "./WelcomeAuth";
-import RegisterComponent from "./Register";
+import Dashboard from "./Dashboard";
 
 export {
-    Splash, 
     LoginPage, 
-    WelcomeAuth, 
-    RegisterComponent
+    Dashboard,
 }

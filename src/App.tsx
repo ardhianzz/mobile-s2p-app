@@ -13,7 +13,3 @@ const App = () => {
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  home: {backgroundColor:"skyblue", height:100, width:100, borderRadius:20, shadowRadius:10}
-})
