@@ -2,7 +2,6 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import logo from '../../assets/image/logo.png'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
-import Colors from '../../components'
 
 const LoginPage = ({navigation}) => {
   

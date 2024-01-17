@@ -1,3 +1,5 @@
-import Colors from "./Thema";
+import * as Form from "./Form"
+import * as Btn from "./Button"
+import * as Icon from "./Icon"
 
-export {Colors};
+export { Form, Btn, Icon};
