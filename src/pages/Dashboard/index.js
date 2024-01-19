@@ -7,9 +7,14 @@ const Dashboard = () => {
   
   return (
     <View>
-      <Btn.Primary title={"Tombol Primary"} size={5}/>
-      <Btn.Warning title={"Tombol Warning"} size={15}/>
-      <Btn.Danger title={"Tombol Danger"} size={30} />
+      <Btn.Button title={"Tombol Bebas"} size={30} color={"warning"} text={"dark"} />
+
+
+      <Btn.IconLeft 
+          title={"Icon Left"} 
+          size={30} 
+          color={"primary"} 
+          text={"white"} />
 
       <View style={{padding:14}}></View>
       <Form.FromSecure placeholder={"Test Pengembangan Sistem"} size={10} />

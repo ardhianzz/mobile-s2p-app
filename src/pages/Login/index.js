@@ -1,12 +1,49 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/image/logo.png'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
+import { Api } from '../../api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+
 
 const LoginPage = ({navigation}) => {
+
+  const [formLogin, setFormLogin] = useState({
+    email: '',
+    password: '',
+  });
+  const [statusLogin, setStatusLogin] = useState(false);
   
-  const actionLogin = () => {
-    navigation.replace("Dashboard");
+
+  const changeValue = (value, input) =>{
+    setFormLogin({
+      ...formLogin, 
+      [input] : value,
+    });
+  }
+
+  const actionLogin = async () => {
+    try {
+      const url = 'login';
+      const data = formLogin;
+      const response = await Api(url, data);
+      setStatusLogin(false);
+
+      await AsyncStorage.setItem('userToken', response.data.token);
+      
+      navigation.replace("Dashboard");
+
+    } catch (error) {
+      setStatusLogin(true);
+      setFormLogin({
+        ...formLogin,
+        password: '',
+      })
+    }
+
+
   }
 
   return (
@@ -18,9 +55,22 @@ const LoginPage = ({navigation}) => {
       </View>
 
       <View style={styles.formWrapper}>
-        <TextInput style={styles.formInput} placeholder='username' />
-        <TextInput style={styles.formInput} placeholder='password' secureTextEntry />
-        <TextInput style={styles.formInput} placeholder='ngising'></TextInput>
+        <TextInput 
+            style={styles.formInput} 
+            placeholder='username' 
+            value={formLogin.email} 
+            onChangeText={value => changeValue(value, 'email')}
+        />
+
+        <TextInput 
+          style={styles.formInput} 
+          placeholder='password' 
+          secureTextEntry
+          value={formLogin.password} 
+          onChangeText={value => changeValue(value, 'password')} 
+        />
+        {statusLogin && <Text style={styles.error}> Username atau password salah</Text>}
+        
       </View>
 
 
@@ -45,6 +95,12 @@ const LoginPage = ({navigation}) => {
 export default LoginPage
 
 const styles = StyleSheet.create({
+  error:{
+    color:"red",
+    fontWeight:"300",
+    fontSize:12,
+    textAlign:"center"
+  },
   footerFont:{
     textAlign:"center",
     fontSize:12,

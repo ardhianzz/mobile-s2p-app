@@ -1,9 +1,8 @@
-import Primary from "./Primary";
-import Danger from "./Danger";
-import Warning from "./Warning";
+import Button from "./Button";
+import IconLeft from "./IconLeft";
+
 
 export {
-    Primary,
-    Danger,
-    Warning
+    Button,
+    IconLeft,
 }
