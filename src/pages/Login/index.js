@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/image/logo.png'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
-import { Api } from '../../api'
+import { Api, checkLogin } from '../../api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -24,7 +24,7 @@ const LoginPage = ({navigation}) => {
     });
   }
 
-  const actionLogin = async () => {
+  const apiLogin = async () => {
     try {
       const url = 'login';
       const data = formLogin;
@@ -42,8 +42,26 @@ const LoginPage = ({navigation}) => {
         password: '',
       })
     }
+  }
 
+  const checkLogin = async () => {
+    try {
+      const storedData = await AsyncStorage.getItem('userToken');
+  
+      if (storedData !== null) {
+        navigation.replace("Dashboard");
+      }
+    } catch (error) {
+      console.error('Terjadi kesalahan saat mengambil data dari AsyncStorage:', error);
+    }
+  };
 
+  useEffect(() => {
+    checkLogin();
+  },[]);
+
+  const actionLogin = () => {
+    apiLogin();
   }
 
   return (
