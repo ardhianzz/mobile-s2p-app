@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const SubMenu = ({ onClose }) => {
+  const navigation = useNavigation();
+
+  
+
+  const actionSubMenu = (opsi) =>{
+    onClose();
+    setTimeout(() => {navigation.navigate(opsi)}, 500);
+  }
+
+
   return (
     <View style={styles.subMenuWrapper}>
-      <Text style={styles.subMenu}>Sub Menu 1</Text>
-      <Text style={styles.subMenu}>Sub Menu 2</Text>
-      <Text style={styles.subMenu}>Sub Menu 3</Text>
+
+      <TouchableOpacity onPress={() => actionSubMenu("Dashboard")}>
+        <Text style={styles.subMenu}>Dashboard</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => actionSubMenu("ProfileKeluarga")}>
+        <Text style={styles.subMenu}>ProfileKeluarga</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity onPress={onClose}>
         <Text style={[styles.closeButton, styles.subMenu]}>Close</Text>
@@ -15,7 +32,7 @@ const SubMenu = ({ onClose }) => {
   );
 };
 
-const App = () => {
+const Profile = () => {
   const [isSubMenuVisible, setSubMenuVisible] = useState(false);
 
   const openSubMenu = () => {
@@ -90,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Profile;

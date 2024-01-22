@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, Modal, TouchableOpacity } from 'react-native'
 import MenuIcon from './Icon/MenuIcon'
@@ -36,6 +36,10 @@ const Dashboard = ({navigation}) => {
       console.error('Terjadi kesalahan saat mengambil data dari AsyncStorage:', error);
     }
   };
+
+  const actionMenu = (opsi = "test") => {
+    navigation.navigate(opsi);
+  }
 
   useEffect(() => {
     checkLogin();
@@ -92,17 +96,9 @@ const Dashboard = ({navigation}) => {
 
         <ScrollView style={styles.menuWrapper}>
             <View style={styles.menuCover}>
-                <MenuIcon title={"Test"} />
-                <MenuIcon title={"Menu 1"} />
-                <MenuIcon title={"Menu 2"} />
-                <MenuIcon title={"Menu 3"} />
-                <MenuIcon title={"Menu 4"} />
-                <MenuIcon title={"Menu 5"} />
-                <MenuIcon title={"Menu 6"} />
-                <MenuIcon title={"Menu 7"} />
-                <MenuIcon title={"Menu 8"} />
-                <MenuIcon title={"Menu 9"} />
-                <MenuIcon title={"Menu 10"} />
+                <TouchableOpacity onPress={() => actionMenu("Profile")}>
+                  <MenuIcon title={"Profile"} />
+                </TouchableOpacity>
             </View>
         </ScrollView>
 
