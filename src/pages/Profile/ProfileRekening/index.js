@@ -2,17 +2,17 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
 
-const ProfileKeluarga = () => {
+const ProfileRekening = () => {
   return (
     <View>
-      <Header pageName={"Profile Keluarga"}/>
+      <Header pageName={"Profile Rekening"}/>
       <ScrollView>
-        <Text>ProfileKeluarga</Text>
+        <Text>ProfileRekening</Text>
       </ScrollView>
     </View>
   )
 }
 
-export default ProfileKeluarga
+export default ProfileRekening
 
 const styles = StyleSheet.create({})

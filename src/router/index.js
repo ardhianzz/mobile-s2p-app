@@ -1,6 +1,15 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Dashboard, LoginPage, Profile, ProfileKeluarga} from "../pages";
+import { Dashboard,
+         LoginPage, 
+         Profile, 
+         ProfileKeluarga,
+         ProfilePendidikan,
+         ProfileAsuransi,
+         ProfileRekening,
+         Sppd,
+         RiwayatPengajuan,
+        } from "../pages";
 import  {Colors}  from '../components/Thema'
 
 const Stack = createStackNavigator();
@@ -13,6 +22,15 @@ const Router = () => {
 
             <Stack.Screen options={{ headerShown:false }} name="Profile" component={Profile} />
             <Stack.Screen options={{ headerShown:false }} name="ProfileKeluarga" component={ProfileKeluarga} />
+            <Stack.Screen options={{ headerShown:false }} name="ProfilePendidikan" component={ProfilePendidikan} />
+            <Stack.Screen options={{ headerShown:false }} name="ProfileAsuransi" component={ProfileAsuransi} />
+            <Stack.Screen options={{ headerShown:false }} name="ProfileRekening" component={ProfileRekening} />
+
+
+
+            <Stack.Screen options={{ headerShown:false }} name="Sppd" component={Sppd} />
+            <Stack.Screen options={{ headerShown:false }} name="RiwayatPengajuan" component={RiwayatPengajuan} />
+            
         </Stack.Navigator>
     )
 }

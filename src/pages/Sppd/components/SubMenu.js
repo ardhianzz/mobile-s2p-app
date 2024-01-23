@@ -18,27 +18,11 @@ const SubMenu = ({ onClose }) => {
         <Text style={styles.subMenu}>Dashboard</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSubMenu("Profile")}>
-        <Text style={styles.subMenu}>Profile</Text>
+      <TouchableOpacity onPress={() => actionSubMenu("RiwayatPengajuan")}>
+        <Text style={styles.subMenu}>Riwayat SPPD</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSubMenu("ProfileKeluarga")}>
-        <Text style={styles.subMenu}>Data Keuarga</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => actionSubMenu("ProfilePendidikan")}>
-        <Text style={styles.subMenu}>Data Pendidikan</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => actionSubMenu("ProfileAsuransi")}>
-        <Text style={styles.subMenu}>Data Asuransi</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => actionSubMenu("ProfileRekening")}>
-        <Text style={styles.subMenu}>Data Rekening</Text>
-      </TouchableOpacity>
-
-
+    
       <TouchableOpacity onPress={onClose}>
         <Text style={[styles.closeButton, styles.subMenu]}>Close</Text>
       </TouchableOpacity>

@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Header from './components/Header'
 
-const ProfileKeluarga = () => {
+const Sppd = () => {
   return (
     <View>
-      <Text>ProfileKeluarga</Text>
+      <Header pageName='SPPD' />
+      <Text>Sppd</Text>
     </View>
   )
 }
 
-export default ProfileKeluarga
+export default Sppd
 
 const styles = StyleSheet.create({})

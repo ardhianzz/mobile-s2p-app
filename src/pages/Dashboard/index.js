@@ -99,6 +99,11 @@ const Dashboard = ({navigation}) => {
                 <TouchableOpacity onPress={() => actionMenu("Profile")}>
                   <MenuIcon title={"Profile"} />
                 </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                  <MenuIcon title={"Sppd"} />
+                </TouchableOpacity>
+
             </View>
         </ScrollView>
 
