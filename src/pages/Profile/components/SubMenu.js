@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../../components/Thema';
-
 
 
 const SubMenu = ({ onClose, swithPage }) => {
@@ -43,11 +42,13 @@ const SubMenu = ({ onClose, swithPage }) => {
       <View style={styles.divide}/>
       
       <TouchableOpacity onPress={() => actionSubMenu("Dashboard")}>
-        <Text style={styles.subMenu}>Dashboard</Text>
+        <Text style={styles.subMenu}>
+          Dashboard
+          </Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={onClose}>
-        <Text style={[styles.closeButton, styles.subMenu]}>Close</Text>
+        <Text style={[styles.closeButton]}>Close</Text>
       </TouchableOpacity>
     </View>
   );
@@ -63,25 +64,29 @@ const styles = StyleSheet.create({
     backgroundColor:"#3f3f3f",
   },
   subMenu:{
-    paddingLeft:10,
-    marginLeft:5,
-    marginRight:15,
-    borderWidth:0.2,
-    paddingVertical:10,
-    marginVertical:3,
+    paddingLeft:15,
+    borderTopWidth:0.4,
+    paddingVertical:15,
     borderColor:Colors.thema1.white,
-    backgroundColor:Colors.thema1.dark,
+    backgroundColor:Colors.thema1.secondary,
     color:Colors.thema1.white,
   },
   subMenuWrapper: {
     flex: 1,
     backgroundColor:"#000879ee",
+    paddingTop:10,
     marginTop:63,
     width: '50%',
     alignSelf:'flex-start',
   },
   closeButton: {
-    marginTop: 10,
-    color: 'red',
+    marginTop:20,
+    paddingLeft:15,
+    borderTopWidth:0.4,
+    paddingVertical:15,
+    fontWeight:"600",
+    borderColor:Colors.thema1.white,
+    backgroundColor:Colors.thema1.secondary,
+    color:Colors.thema1.warning,
   },
 });
