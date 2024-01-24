@@ -1,11 +1,12 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/image/logo.png'
+import loading from '../../assets/Icons/loading.gif'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
-import { Api, checkLogin } from '../../api'
+import { Api } from '../../api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
+import { Colors } from '../../components/Thema'
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const LoginPage = ({navigation}) => {
@@ -15,7 +16,7 @@ const LoginPage = ({navigation}) => {
     password: '',
   });
   const [statusLogin, setStatusLogin] = useState(false);
-  
+  const [onLoading, setOnLoading] = useState(false);
 
   const changeValue = (value, input) =>{
     setFormLogin({
@@ -25,6 +26,7 @@ const LoginPage = ({navigation}) => {
   }
 
   const apiLogin = async () => {
+    setOnLoading(true);
     try {
       const url = 'login';
       const data = formLogin;
@@ -36,6 +38,7 @@ const LoginPage = ({navigation}) => {
       navigation.replace("Dashboard");
 
     } catch (error) {
+      setOnLoading(false);
       setStatusLogin(true);
       setFormLogin({
         ...formLogin,
@@ -65,61 +68,75 @@ const LoginPage = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.headerWrapper}>
-        <Image source={logo} style={styles.images} />
-        <Text style={styles.logoTitle} >PT SUMBER SEGARA PRIMADAYA</Text>
-        <Text>By IT Support Jakarta</Text>
-      </View>
-
-      <View style={styles.formWrapper}>
-        <TextInput 
-            style={styles.formInput} 
-            placeholder='username' 
-            value={formLogin.email} 
-            onChangeText={value => changeValue(value, 'email')}
-        />
-
-        <TextInput 
-          style={styles.formInput} 
-          placeholder='password' 
-          secureTextEntry
-          value={formLogin.password} 
-          onChangeText={value => changeValue(value, 'password')} 
-        />
-        {statusLogin && <Text style={styles.error}> Username atau password salah</Text>}
-        
-      </View>
-
-
-      <View style={styles.submitWrapper}>
-        <TouchableOpacity onPressOut={actionLogin}>
-          <View style={styles.tombolSubmit}>
-            <Text style={styles.login}>LOGIN</Text>
+      <LinearGradient colors={['#6187da', '#3b5998', '#142a68']} style={styles.container}>
+        <ScrollView>
+          <View style={styles.headerWrapper}>
+            <Image source={logo} style={styles.images} />
+            <Text style={styles.logoTitle} >PT SUMBER SEGARA PRIMADAYA</Text>
+            <Text style={{color:Colors.thema1.white,}}>By IT Support Jakarta</Text>
           </View>
-        </TouchableOpacity>
-      </View>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerFont}>
-          Head Office : Treasury Tower, 39th Floor. SCBD - Jakarta Selatan
-          Site Office : Jln. Lingkar Timur Desa Karang Kandri, Kecamatan Kesugihan. Cilacap - Jawa Tengah
-        </Text>
-      </View>
-    </ScrollView>
+          <View style={styles.formWrapper}>
+            <TextInput 
+                style={styles.formInput} 
+                placeholder='username' 
+                value={formLogin.email}
+                placeholderTextColor={"#015e8a"}  
+                onChangeText={value => changeValue(value, 'email')}
+            />
+
+            <TextInput 
+              style={styles.formInput} 
+              placeholder='password'
+              placeholderTextColor={"#015e8a"} 
+              secureTextEntry
+              value={formLogin.password} 
+              onChangeText={value => changeValue(value, 'password')} 
+            />
+            {statusLogin && <Text style={styles.error}> Username atau password salah</Text>}
+          </View>
+
+
+          <View style={styles.submitWrapper}>
+            <TouchableOpacity onPressOut={actionLogin}>
+              <View style={styles.tombolSubmit}>
+                <Text style={styles.login}>LOGIN</Text>
+                { onLoading && <Image source={loading} style={styles.loadingImage}/>}
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.footer}>
+            <Text style={styles.footerFont}>
+              Head Office : Treasury Tower, 39th Floor. SCBD - Jakarta Selatan
+              Site Office : Jln. Lingkar Timur Desa Karang Kandri, Kecamatan Kesugihan. Cilacap - Jawa Tengah
+            </Text>
+          </View>
+        </ScrollView>
+    </LinearGradient>
+
   )
 }
 
 export default LoginPage
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backgroundPage:{
+    backgroundColor:Colors.thema1.primary,
+  },
   error:{
-    color:"red",
+    color:"#bd7777",
     fontWeight:"300",
     fontSize:12,
     textAlign:"center"
   },
   footerFont:{
+    color:Colors.thema1.white,
     textAlign:"center",
     fontSize:12,
   },
@@ -127,6 +144,7 @@ const styles = StyleSheet.create({
     marginTop:50,
   },
   logoTitle:{
+    color:Colors.thema1.white,
     paddingTop:20,
     fontWeight:"900",
     fontSize:20,
@@ -134,18 +152,23 @@ const styles = StyleSheet.create({
 
   submitWrapper:{
     marginHorizontal:50,
-    // backgroundColor:"skyblue",
   },
   tombolSubmit: {
+    flexDirection:"row",
     borderRadius:5,
-    borderWidth:2,
+    backgroundColor:"#000077",
     justifyContent:"center",
     alignItems:"center",
-    // backgroundColor:"skyblue",
-    height:50
+    height:50,
+
+    shadowColor: '#000000', // Warna bayangan
+    shadowOffset: { width: 0, height: 2 }, // Offset bayangan
+    shadowOpacity: 0.9, // Opasitas bayangan
+    shadowRadius: 1, // Radius bayangan
+    elevation: 3, // Efek bayangan untuk Android
   },
   login:{
-    color:"gray",
+    color:"#f7fff0",
     fontWeight:"700"
   },
 
@@ -154,26 +177,30 @@ const styles = StyleSheet.create({
     paddingVertical:30,
     marginTop:50,
     alignItems:"center",
-    // backgroundColor:"aqua"
   },
 
   formWrapper:{
     marginHorizontal:50,
     marginVertical:30,
-    // backgroundColor:"grey"
   },
 
   formInput:{
-    // backgroundColor:"#FFFFF0", 
     margin:10, 
-    borderWidth:2, 
+    borderWidth:1,
+    borderColor:"#001a6e", 
     borderRadius:5, 
-    paddingHorizontal:15
+    paddingHorizontal:15,
+    color:Colors.thema1.dark,
+    backgroundColor:"#dae9ff",
   },
 
   images: {
     height:100, 
     width:160
+  },
+  loadingImage:{
+    height:35, 
+    width:35
   },
 
 })

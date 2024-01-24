@@ -5,10 +5,7 @@ import Header from '../components/Header'
 const ProfileKeluarga = () => {
   return (
     <View>
-      <Header pageName={"Profile Keluarga"}/>
-      <ScrollView>
         <Text>ProfileKeluarga</Text>
-      </ScrollView>
     </View>
   )
 }

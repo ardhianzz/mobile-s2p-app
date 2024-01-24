@@ -5,10 +5,7 @@ import Header from '../components/Header'
 const ProfilePendidikan = () => {
   return (
     <View>
-      <Header pageName={"Profile Pendidikan"}/>
-      <ScrollView>
         <Text>ProfilePendidikan</Text>
-      </ScrollView>
     </View>
   )
 }
