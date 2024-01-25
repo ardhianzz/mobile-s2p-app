@@ -1,23 +1,67 @@
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import iconEdit from '../../../assets/Icons/edit.png'
 import iconAvatar from '../../../assets/Icons/user.png'
 import { Colors } from '../../../components/Thema'
+import DocumentPicker from 'react-native-document-picker'
+import {Api} from '../../../api'
 
 const ProfileHome = () => {
   const [showEdit, setShowEdit] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [dataUmum, setDataUmum] = useState({});
+
+  const pickDocument = async () => {
+    try {
+     const result = DocumentPicker.pick({
+      type: [DocumentPicker.types.images],
+     });
+     console.log(selectedFile);
+     setSelectedFile(result);
+     console.log(selectedFile);
+    } catch (error) {
+     if(DocumentPicker.isCancel(error)){
+      console.log("error : Cancle Pick");
+     } else{
+      console.log(error);
+     }
+    }
+  }
 
   const toggleEdit = () => {
     setShowEdit(! showEdit);
   }
-  return (
+
+
+
+  const getData = async () => {
+    try {
+      const url = 'pegawai/settings/profile/data';
+      const data = {};
+      const response = await Api(url, data);
+      setDataUmum(response.data);
+
+      console.log(dataUmum.nama);
+      // sdf
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+
+
+  return ( 
     <View>
         <View style={styles.fotoWrapper}>
           <View style={styles.fotoProfile}>
               <Image source={iconAvatar} resizeMode='cover' style={styles.foto}></Image>
               
               <View style={styles.iconEditFoto}>
-                <TouchableOpacity onPress={() => alert("Upload Gambar")}>
+                <TouchableOpacity onPress={pickDocument}>
                     <Image source={iconEdit} style={{height:20, width:20,}}></Image>
                   </TouchableOpacity>
               </View>
@@ -55,10 +99,10 @@ const ProfileHome = () => {
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>Nama</Text>
                 { showEdit 
-                   ? <Text style={styles.rowData}>Nama Pegawai</Text> 
+                   ? <Text style={styles.rowData}>{dataUmum?.nama}</Text> 
                    : <TextInput 
                        style={styles.rowInput} 
-                       placeholder='Nama Pegawai'
+                       placeholder={dataUmum?.nama}
                        placeholderTextColor={"#a3a3a3"}
                    />
                 }
@@ -67,10 +111,10 @@ const ProfileHome = () => {
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>E-Mail</Text>
                 { showEdit 
-                   ? <Text style={styles.rowData}>Email Pegawai</Text> 
+                   ? <Text style={styles.rowData}>{dataUmum?.email}</Text> 
                    : <TextInput 
                        style={styles.rowInput} 
-                       placeholder='Email Pegawai'
+                       placeholder={dataUmum?.email}
                        placeholderTextColor={"#a3a3a3"}
                    />
                 }
@@ -78,22 +122,22 @@ const ProfileHome = () => {
 
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>NIK</Text>
-                <Text style={styles.rowData}>Alamat Pegawai</Text>
+                <Text style={styles.rowData}>{dataUmum?.nik}</Text>
             </View>
 
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>Divisi</Text>
-                <Text style={styles.rowData}>Alamat Pegawai</Text>
+                <Text style={styles.rowData}>{dataUmum?.nama_divisi}</Text>
             </View>
 
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>Jabatan</Text>
-                <Text style={styles.rowData}>Alamat Pegawai</Text>
+                <Text style={styles.rowData}>{dataUmum?.nama_jabatan}</Text>
             </View>
 
             <View style={styles.row}>
                 <Text style={styles.rowTitle}>Lokasi</Text>
-                <Text style={styles.rowData}>Alamat Pegawai</Text>
+                <Text style={styles.rowData}>{dataUmum?.lokasi}</Text>
             </View>
 
 
