@@ -69,16 +69,14 @@ const Dashboard = ({navigation}) => {
                   </View>
                 </TouchableOpacity>
 
-                <Modal visible={openSettins} transparent animationType='fade'>
-                  <View style={styles.ModalSettins}>
-                      <TouchableOpacity onPress={() => actionSignOut()} style={styles.menuSettins}>
-                        <Text style={styles.textMenuDashboard}>Sign Out</Text>
-                      </TouchableOpacity>
-
-                      <TouchableOpacity onPress={() => toggleMenu()} style={styles.menuSettins}>
-                          <Text style={styles.textMenuDashboard}>Close</Text>
-                      </TouchableOpacity>
-                  </View>
+                <Modal visible={openSettins} transparent={true} animationType='fade'>
+                  <TouchableOpacity style={styles.modalWrapper} onPress={() => setOpenSettings(false)}>
+                      <View style={styles.ModalSettins}>
+                        <TouchableOpacity onPress={() => actionSignOut()} style={styles.menuSettins}>
+                          <Text style={styles.textMenuDashboard}>Sign Out</Text>
+                        </TouchableOpacity>
+                      </View>
+                  </TouchableOpacity>
                 </Modal>
               </View>
 
@@ -166,6 +164,12 @@ const styles = StyleSheet.create({
     width:"90%",
     backgroundColor:"#3a4092",
     borderRadius:15,
+  },
+
+  modalWrapper:{
+    flex:1,
+    width:"100%",
+    height:"100%",
   },
 
   ModalSettins:{

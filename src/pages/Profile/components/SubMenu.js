@@ -18,38 +18,33 @@ const SubMenu = ({ onClose, swithPage }) => {
 
   return (
     <View style={styles.subMenuWrapper}>
+      <View style={styles.displayMenu}>
+        <TouchableOpacity onPress={() => actionSwitch("Profile")}>
+          <Text style={styles.subMenu}>Profile</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSwitch("Profile")}>
-        <Text style={styles.subMenu}>Profile</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => actionSwitch("ProfileAsuransi")}>
+          <Text style={styles.subMenu}>Data Asuransi</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSwitch("ProfileAsuransi")}>
-        <Text style={styles.subMenu}>Data Asuransi</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => actionSwitch("ProfileRekening")}>
+          <Text style={styles.subMenu}>Data Rekening</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSwitch("ProfileRekening")}>
-        <Text style={styles.subMenu}>Data Rekening</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => actionSwitch("ProfileKeluarga")}>
+          <Text style={styles.subMenu}>Data Keuarga</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSwitch("ProfileKeluarga")}>
-        <Text style={styles.subMenu}>Data Keuarga</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => actionSwitch("ProfilePendidikan")}>
+          <Text style={styles.subMenu}>Data Pendidikan</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => actionSwitch("ProfilePendidikan")}>
-        <Text style={styles.subMenu}>Data Pendidikan</Text>
-      </TouchableOpacity>
-
-      <View style={styles.divide}/>
-      
-      <TouchableOpacity onPress={() => actionSubMenu("Dashboard")}>
-        <Text style={styles.subMenu}>
-          Dashboard
-          </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={onClose}>
-        <Text style={[styles.closeButton]}>Close</Text>
-      </TouchableOpacity>
+        <View style={styles.divide}/>
+        
+        <TouchableOpacity onPress={() => actionSubMenu("Dashboard")}>
+          <Text style={styles.subMenu}> Dashboard </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -58,6 +53,17 @@ export default SubMenu;
 
 
 const styles = StyleSheet.create({
+  displayMenu:{
+    marginLeft:10,
+    borderBottomRightRadius:15,
+    borderBottomLeftRadius:15,
+    paddingBottom:15,
+    backgroundColor:"#000879ee",
+    paddingTop:10,
+    marginTop:60,
+    width:"40%",
+    alignSelf:'flex-start',
+  },
   divide:{
     marginVertical:15,
     height:2,
@@ -65,24 +71,16 @@ const styles = StyleSheet.create({
   },
   subMenu:{
     paddingLeft:15,
-    borderTopWidth:0.4,
     paddingVertical:15,
     borderColor:Colors.thema1.white,
-    backgroundColor:Colors.thema1.secondary,
     color:Colors.thema1.white,
   },
   subMenuWrapper: {
-    flex: 1,
-    backgroundColor:"#000879ee",
-    paddingTop:10,
-    marginTop:63,
-    width: '50%',
-    alignSelf:'flex-start',
+    width: '100%',
+    height:"100%",
   },
   closeButton: {
-    marginTop:20,
     paddingLeft:15,
-    borderTopWidth:0.4,
     paddingVertical:15,
     fontWeight:"600",
     borderColor:Colors.thema1.white,

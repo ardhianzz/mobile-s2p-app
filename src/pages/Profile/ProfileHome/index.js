@@ -29,7 +29,7 @@ const ProfileHome = () => {
 
           <View style={styles.titleWrapper}>
             <View style={styles.titleName}>
-              <Text style={styles.title}>A. Informasi Umum</Text>
+              <Text style={styles.title}>A. Data Umum</Text>
             </View>
 
             <View style={styles.titleButtomWrapper}>
@@ -101,10 +101,9 @@ const ProfileHome = () => {
         </View>
         
         <View style={styles.infoWrapper}>
-
           <View style={styles.titleWrapper}>
             <View style={styles.titleName}>
-              <Text style={styles.title}>A. Informasi Umum</Text>
+              <Text style={styles.title}>B. Data Personal</Text>
             </View>
 
             <View style={styles.titleButtomWrapper}>
@@ -128,7 +127,7 @@ const ProfileHome = () => {
 
           <View style={styles.table}>
             <View style={styles.row}>
-                <Text style={styles.rowTitle}>Nama</Text>
+                <Text style={styles.rowTitle}>E-Mail</Text>
                 { showEdit 
                    ? <Text style={styles.rowData}>Nama Pegawai</Text> 
                    : <TextInput 
@@ -140,7 +139,7 @@ const ProfileHome = () => {
             </View>
 
             <View style={styles.row}>
-                <Text style={styles.rowTitle}>E-Mail</Text>
+                <Text style={styles.rowTitle}>Telepon</Text>
                 { showEdit 
                    ? <Text style={styles.rowData}>Email Pegawai</Text> 
                    : <TextInput 
@@ -152,25 +151,19 @@ const ProfileHome = () => {
             </View>
 
             <View style={styles.row}>
-                <Text style={styles.rowTitle}>NIK</Text>
+                <Text style={styles.rowTitle}>No. KTP</Text>
                 <Text style={styles.rowData}>Alamat Pegawai</Text>
             </View>
 
             <View style={styles.row}>
-                <Text style={styles.rowTitle}>Divisi</Text>
+                <Text style={styles.rowTitle}>Alamat</Text>
                 <Text style={styles.rowData}>Alamat Pegawai</Text>
             </View>
 
             <View style={styles.row}>
-                <Text style={styles.rowTitle}>Jabatan</Text>
+                <Text style={styles.rowTitle}>Kontak Darurat</Text>
                 <Text style={styles.rowData}>Alamat Pegawai</Text>
             </View>
-
-            <View style={styles.row}>
-                <Text style={styles.rowTitle}>Lokasi</Text>
-                <Text style={styles.rowData}>Alamat Pegawai</Text>
-            </View>
-
 
           </View>
         </View>

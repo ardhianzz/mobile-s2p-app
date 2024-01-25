@@ -37,8 +37,10 @@ const Header = ({pageName = "S2P", setSwitchPage}) => {
       </View>
       <View style={styles.divide}></View>
 
-      <Modal visible={isSubMenuVisible} transparent animationType='fade'>
-        <SubMenu onClose={closeSubMenu} swithPage={setSwitchPage} />
+      <Modal visible={isSubMenuVisible} transparent={true} animationType='fade'>
+        <TouchableOpacity onPress={closeSubMenu}>
+          <SubMenu onClose={closeSubMenu} swithPage={setSwitchPage} />
+        </TouchableOpacity>
       </Modal>
     </View>
   )
