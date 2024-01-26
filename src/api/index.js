@@ -3,7 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
-const BASE_URL = 'http://mobile-api.pltucilacap.co.id:8089/api';
+// const BASE_URL = 'http://mobile-api.pltucilacap.co.id:8089/api';
+const BASE_URL = 'http://202.165.34.21:8089/api';
 
 const Api = async (url, data, method = 'POST') => {
     try {
@@ -23,5 +24,35 @@ const Api = async (url, data, method = 'POST') => {
       throw error;
     }
   };
+
+  const ApiNative = async (url, data, method = 'POST') => {
+    try {
+      const userToken = await AsyncStorage.getItem('userToken');
   
-  export { Api };
+      const requestOptions = {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+        },
+      };
+  
+      if (data) {
+        requestOptions.body = JSON.stringify(data);
+      }
+  
+      const response = await fetch(`${BASE_URL}/${url}`, requestOptions);
+  
+      if (!response.ok) {
+        // Handle response errors here
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+  
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  export { Api, ApiNative };
