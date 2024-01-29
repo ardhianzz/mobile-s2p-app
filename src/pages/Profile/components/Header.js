@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, Image } from 'react-native';
 import SubMenu from './SubMenu';
-import { useNavigation } from '@react-navigation/native';
-import iconMenu from '../../../assets/Icons/menu-blue.png'
-import LinearGradient from 'react-native-linear-gradient';
+import iconAvatar from '../../../assets/Icons/user.png'
 import { Colors } from '../../../components/Thema';
+
 
 const Header = ({pageName = "S2P", setSwitchPage}) => {
   const [isSubMenuVisible, setSubMenuVisible] = useState(false);
@@ -25,8 +24,7 @@ const Header = ({pageName = "S2P", setSwitchPage}) => {
         <TouchableOpacity onPress={openSubMenu}>
           <View style={styles.iconWrap}>
             <View style={styles.icon}> 
-              {/* <Text style={styles.iconText}>Menu</Text> */}
-              <Image source={iconMenu} style={styles.iconImage} />
+              <Image source={iconAvatar} style={styles.iconImage} />
             </View>
           </View>
         </TouchableOpacity>
@@ -49,9 +47,17 @@ const Header = ({pageName = "S2P", setSwitchPage}) => {
 export default Header
 
 const styles = StyleSheet.create({
-  divide:{
-    height:3,
+  iconImg:{
+    position:"relative",
+    zIndex:300,
+    top:0,
     backgroundColor:"white",
+    width:100,
+    height:100,
+  },
+  divide:{
+    height:5,
+    backgroundColor:"#FFD700",
   },
   namaHalaman:{
     color:Colors.thema1.white,
@@ -68,6 +74,11 @@ const styles = StyleSheet.create({
     textAlign:"right",
   },
   icon:{
+    marginLeft:10,
+    borderRadius:25,
+    backgroundColor:"white",
+    width:50,
+    height:50
   },
   iconWrap: {
     justifyContent:"center",
@@ -81,7 +92,7 @@ const styles = StyleSheet.create({
   topStatus: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#06005f',
+    backgroundColor: '#000146',
     height: 60,
   },
 });

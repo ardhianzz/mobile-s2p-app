@@ -8,7 +8,6 @@ import { Dashboard,
          ProfileAsuransi,
          ProfileRekening,
          Sppd,
-         RiwayatPengajuan,
         } from "../pages";
 import  {Colors}  from '../components/Thema'
 
@@ -28,9 +27,7 @@ const Router = () => {
 
 
 
-            <Stack.Screen options={{ headerShown:false }} name="Sppd" component={Sppd} />
-            <Stack.Screen options={{ headerShown:false }} name="RiwayatPengajuan" component={RiwayatPengajuan} />
-            
+            <Stack.Screen options={{ headerShown:false }} name="Sppd" component={Sppd} />            
         </Stack.Navigator>
     )
 }

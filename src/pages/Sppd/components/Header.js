@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, Image } from 'react-native';
 import SubMenu from './SubMenu';
-import { useNavigation } from '@react-navigation/native';
+import iconAvatar from '../../../assets/Icons/user.png'
+import { Colors } from '../../../components/Thema';
 
 
-
-const Header = ({pageName = "S2P"}) => {
+const Header = ({pageName = "S2P", setSwitchPage}) => {
   const [isSubMenuVisible, setSubMenuVisible] = useState(false);
+  const namaHalaman = pageName.replace(/([A-Z])/g, ' $1').toUpperCase();
+
 
   const openSubMenu = () => {
     setSubMenuVisible(true);
@@ -19,22 +21,24 @@ const Header = ({pageName = "S2P"}) => {
   return (
     <View>
       <View style={styles.topStatus}>
-
         <TouchableOpacity onPress={openSubMenu}>
           <View style={styles.iconWrap}>
             <View style={styles.icon}> 
-              <Text style={styles.iconText}>Menu</Text>
+              <Image source={iconAvatar} style={styles.iconImage} />
             </View>
           </View>
         </TouchableOpacity>
 
         <View style={styles.statusNama}>
-          <Text>{pageName}</Text>
+          <Text style={styles.namaHalaman}>{namaHalaman}</Text>
         </View>
       </View>
+      <View style={styles.divide}></View>
 
-      <Modal visible={isSubMenuVisible} transparent animationType='fade'>
-        <SubMenu onClose={closeSubMenu} />
+      <Modal visible={isSubMenuVisible} transparent={true} animationType='fade'>
+        <TouchableOpacity onPress={closeSubMenu}>
+          <SubMenu onClose={closeSubMenu} swithPage={setSwitchPage} />
+        </TouchableOpacity>
       </Modal>
     </View>
   )
@@ -43,14 +47,41 @@ const Header = ({pageName = "S2P"}) => {
 export default Header
 
 const styles = StyleSheet.create({
+  iconImg:{
+    position:"relative",
+    zIndex:300,
+    top:0,
+    backgroundColor:"white",
+    width:100,
+    height:100,
+  },
+  divide:{
+    height:5,
+    backgroundColor:"#FFD700",
+  },
+  namaHalaman:{
+    color:Colors.thema1.white,
+    fontSize:25,
+    marginRight:20,
+    fontWeight:"500"
+  },
+  iconImage:{
+    margin:10,
+    width:30,
+    height:30
+  },
   iconText:{
     textAlign:"right",
   },
   icon:{
+    marginLeft:10,
+    borderRadius:25,
+    backgroundColor:"white",
+    width:50,
+    height:50
   },
   iconWrap: {
     justifyContent:"center",
-    backgroundColor:"salmon",
     height:"100%",
     width:100,
   },
@@ -61,8 +92,7 @@ const styles = StyleSheet.create({
   topStatus: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderWidth: 1,
-    backgroundColor: 'white',
-    height: 50,
+    backgroundColor: '#000146',
+    height: 60,
   },
 });

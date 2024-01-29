@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient'
 import iconSppd from '../../assets/Icons/travel.png'
 import iconProfile from '../../assets/Icons/verified.png'
-
+import iconSetting from '../../assets/Icons/Settings.png'
 
 const Dashboard = ({navigation}) => {
   const [openSettins, setOpenSettings] = useState(false); 
@@ -52,7 +52,7 @@ const Dashboard = ({navigation}) => {
 
   
   return (
-    <LinearGradient colors={['#6187da', '#3b5998', '#142a68']} style={styles.container}>
+    <LinearGradient colors={['#0b1c4b', '#5272b6', '#c3d3f5', '#0b1c4b']} style={styles.container}>
       <ScrollView>
           <View style={styles.background}>
               <View style={styles.topStatus}>
@@ -62,19 +62,20 @@ const Dashboard = ({navigation}) => {
                 </View>
                 <TouchableOpacity onPress={() => toggleMenu()}>
                   <View style={styles.info}>
-                    <Text style={styles.infoSettings}>Settings</Text>
-                    <View style={styles.triangleContainer}>
-                      <View style={styles.triangle} />
-                    </View>
+                    <Image source={iconSetting} style={styles.settingIcon}></Image>
                   </View>
                 </TouchableOpacity>
 
                 <Modal visible={openSettins} transparent={true} animationType='fade'>
                   <TouchableOpacity style={styles.modalWrapper} onPress={() => setOpenSettings(false)}>
                       <View style={styles.ModalSettins}>
+                        <TouchableOpacity onPress={() => alert("account")} style={styles.menuSettins}>
+                          <Text style={styles.textMenuDashboard}>Account</Text>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => actionSignOut()} style={styles.menuSettins}>
                           <Text style={styles.textMenuDashboard}>Sign Out</Text>
                         </TouchableOpacity>
+                     
                       </View>
                   </TouchableOpacity>
                 </Modal>
@@ -116,6 +117,13 @@ const Dashboard = ({navigation}) => {
 export default Dashboard
 
 const styles = StyleSheet.create({
+  settingIcon:{
+    width:30, 
+    height:30, 
+    backgroundColor:"white", 
+    borderRadius:10, 
+    opacity:0.7
+  },
   footerText:{
     textAlign:"center",
     color:"#ffffff9d",
@@ -130,26 +138,6 @@ const styles = StyleSheet.create({
     color:Colors.thema1.white,
     fontWeight:"400",
   },
-  triangleContainer: {
-    marginLeft:5,
-    width: 0,
-    height: 0,
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-    borderTopWidth: 10,
-    borderStyle: 'solid',
-    backgroundColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderTopColor: 'white', 
-  },
-  triangle: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -158,11 +146,9 @@ const styles = StyleSheet.create({
   menuSettins:{
     flexDirection:"row",
     justifyContent:"flex-end",
-    marginVertical:5,
     paddingVertical:8,
     paddingHorizontal:10,
     width:"90%",
-    backgroundColor:"#3a4092",
     borderRadius:15,
   },
 
@@ -174,23 +160,17 @@ const styles = StyleSheet.create({
 
   ModalSettins:{
     paddingRight:10,
-    marginTop:50,
-    marginLeft:"50%",
-    marginRight:30,
+    marginTop:60,
+    marginRight:15,
+    borderBottomEndRadius:15,
+    borderTopStartRadius:15,
+    marginLeft:"70%",
     alignItems:"flex-end",
-    paddingBottom:10,
+    backgroundColor:"#00008057",
   },
 
-
-
-  infoSettings:{
-    fontWeight:"700",
-    color:Colors.thema1.white
-  },
   info:{
     borderRadius:5,
-    paddingVertical:10,
-    paddingHorizontal:25,
     flexDirection:"row",
     alignItems:"center",
   },
@@ -223,12 +203,12 @@ const styles = StyleSheet.create({
  menuWrapper: {
    height: 250,
    paddingTop:10,
-   backgroundColor: '#ffffff',
+   backgroundColor: '#e5e6fff4',
  },
 
  divide:{
    height:10,
-   backgroundColor:"#080079",
+   backgroundColor:"#FFD700",
  },
  cover:{
    backgroundColor:"#ffffff",
@@ -250,7 +230,7 @@ const styles = StyleSheet.create({
    borderRadius:250/2,
    height:250,
    width:250,
-   backgroundColor:"black"
+   backgroundColor:"#FFD700"
  }, 
  background:{
    height:370,

@@ -6,7 +6,6 @@ import ProfileAsuransi from "./Profile/ProfileAsuransi";
 import ProfilePendidikan from "./Profile/ProfilePendidikan";
 import ProfileRekening from "./Profile/ProfileRekening";
 import Sppd from "./Sppd"
-import RiwayatPengajuan from "./Sppd/RIwayatPengajuan";
 
 
 
@@ -21,5 +20,4 @@ export {
     ProfilePendidikan,
     ProfileRekening,
     Sppd,
-    RiwayatPengajuan,
 }

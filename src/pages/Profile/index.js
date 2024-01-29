@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, ScrollView, Modal, TouchableOpacity } from 'react-native';
 import Header from './components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import ProfileHome from './ProfileHome';
@@ -18,7 +17,7 @@ const Profile = () => {
   return (
     <>
       <Header pageName={switchPage} setSwitchPage={setSwitchPage}/>
-      <LinearGradient colors={['#e6eeff', '#dae5fc', '#a6c0f8']} style={styles.container}>
+      <LinearGradient colors={['#0b1c4b', '#5272b6', '#c3d3f5', '#0b1c4b']} style={styles.container}>
         <ScrollView>
          {(switchPage == "Profile") &&<ProfileHome />}
          {(switchPage == "ProfileAsuransi") &&<ProfileAsuransi />}
