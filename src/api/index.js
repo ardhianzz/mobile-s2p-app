@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
-const BASE_URL = 'https://mobile-api.pltucilacap.co.id:8089/api';
+const BASE_URL = 'https://mobile-api.pltucilacap.co.id/api';
 
 const Api = async (url, data, method = 'POST') => {
     try {

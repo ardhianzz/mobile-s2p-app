@@ -11,7 +11,7 @@ const Sppd = () => {
   const [switchPage, setSwitchPage] = useState("SPPD");
   const [pageName, setPageName] = useState(switchPage);
   return (
-    <LinearGradient colors={['#0b1c4b', '#5272b6', '#c3d3f5', '#0b1c4b']} style={styles.container}>
+    <LinearGradient colors={['#f1f1f1', '#f1f1f1', '#f1f1f1', '#f1f1f1']} style={styles.container}>
       <Header pageName={switchPage} setSwitchPage={setSwitchPage}/>
       <View style={styles.divide}></View>
 
