@@ -17,7 +17,7 @@ const Profile = () => {
   return (
     <>
       <Header pageName={switchPage} setSwitchPage={setSwitchPage}/>
-      <LinearGradient colors={['#0b1c4b', '#5272b6', '#c3d3f5', '#0b1c4b']} style={styles.container}>
+      <LinearGradient colors={['#ffffff', '#ebebeb',]} style={styles.container}>
         <ScrollView>
          {(switchPage == "Profile") &&<ProfileHome />}
          {(switchPage == "ProfileAsuransi") &&<ProfileAsuransi />}

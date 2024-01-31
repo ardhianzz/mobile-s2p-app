@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, TextInput, Image } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Image, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { Modal, TouchableOpacity } from 'react-native'
 import { Colors } from '../../../components/Thema';
 import iconEdit from '../../../assets/Icons/edit.png'
-
+import backgroundBPJS from '../../../assets/image/bpjs.png'
 
 
 const ProfileAsuransi = () => {
@@ -31,7 +31,7 @@ const ProfileAsuransi = () => {
         <View style={styles.titleButtomWrapper}>
           <TouchableOpacity onPress={() => toggleModal() }>
             <View style={[styles.titleButtom,]}>
-              <Text style={styles.buttom}>Tambah</Text>
+              <Text style={{fontWeight:"900", fontSize:20,}}>+</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -105,35 +105,39 @@ const ProfileAsuransi = () => {
         </Modal>
       </View>
 
-      <View style={[styles.cardContainer,]}>
-        <TouchableOpacity style={styles.cardOption} onPress={toogleOption}>
-          <View>
-            <Image source={iconEdit} style={{width:20, height:20}}></Image>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-                onPress={toogleOption} 
-                style={[styles.optionCard, cardModal ? {display:'flex'} : {display:'none'}]}>
-            
-            
-            <View style={styles.optionTip}>
-              <TouchableOpacity style={styles.optionBtn} onPress={() => alert("Rubah")}>
-                <Text style={{fontWeight:"600"}}>Rubah</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.optionBtn} onPress={() => alert("Hapus")}>
-                <Text style={{fontWeight:"600"}}>Hapus</Text>
-              </TouchableOpacity>
+      <View style={[styles.cardContainer]}>
+        <ImageBackground source={backgroundBPJS} style={{width:"100%", height:"100%"}} resizeMode='cover'>
+          <TouchableOpacity style={styles.cardOption} onPress={toogleOption}>
+            <View>
+              <Image source={iconEdit} style={{width:20, height:20}}></Image>
             </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          <TouchableOpacity
+                  onPress={toogleOption} 
+                  style={[styles.optionCard, cardModal ? {display:'flex'} : {display:'none'}]}>
+              <View style={styles.optionTip}>
+                <View style={{backgroundColor:"white", paddingRight:10, paddingVertical:3, paddingLeft:9, borderRadius:5}}>
+                  <TouchableOpacity style={styles.optionBtn} onPress={() => alert("Rubah")}>
+                    <Text style={{fontWeight:"600"}}>Rubah</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.optionBtn} onPress={() => alert("Hapus")}>
+                    <Text style={{fontWeight:"600"}}>Hapus</Text>
+                  </TouchableOpacity>
+                </View>
 
-        <View style={styles.cardBody}>
-          <Text style={styles.titleAsuransi}>PROGRAM ASURANSI</Text>
-          <Text style={styles.bodyAsuransi}>PT PERUSAHAAN ASURANSI dfsd</Text>
-          <Text style={styles.bodyAsuransi}>NO. POLIS </Text>
-          <Text style={styles.bodyAsuransi}>MASA BERLAKU</Text>
-          <Text></Text>
-          <Text style={styles.bodyAsuransi}>Lampiran</Text>
-        </View>
+
+              </View>
+          </TouchableOpacity>
+
+          <View style={styles.cardBody}>
+            <Text style={styles.titleAsuransi}>PROGRAM ASURANSI</Text>
+            <Text style={styles.bodyAsuransi}>PT PERUSAHAAN ASURANSI dfsd</Text>
+            <Text style={styles.bodyAsuransi}>NO. POLIS </Text>
+            <Text style={styles.bodyAsuransi}>MASA BERLAKU</Text>
+            <Text></Text>
+            <Text style={styles.bodyAsuransi}>Lampiran</Text>
+          </View>
+        </ImageBackground>
       </View>
 
     </View>
@@ -247,8 +251,17 @@ const styles = StyleSheet.create({
     alignSelf:"center",
     borderRadius:8,
     width:"85%",
-    borderWidth:2,
-    maxHeight:200,
+    maxHeight:210,
+
+    shadowColor:"#000000",
+    shadowRadius:100,
+    shadowOffset:{
+      height:-10,
+      width:6, 
+    },
+    shadowOpacity:1,
+    elevation:4,
+
   },
 
   container:{
@@ -256,16 +269,9 @@ const styles = StyleSheet.create({
   },
   titleButtom:{
     backgroundColor:"skyblue",
-    paddingVertical:5,
-    paddingHorizontal:20,
+    paddingHorizontal:10,
     borderRadius:5,
     marginHorizontal:3,
-
-    shadowColor:"black",
-    shadowOffset:{height:2, width:0},
-    shadowOpacity:1,
-    shadowRadius:2,
-    elevation:3,
   },
   title:{
     fontWeight:"800",
