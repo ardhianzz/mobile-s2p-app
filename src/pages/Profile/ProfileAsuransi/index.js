@@ -1,15 +1,17 @@
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal, TouchableOpacity } from 'react-native'
 import { Colors } from '../../../components/Thema';
 import iconEdit from '../../../assets/Icons/edit.png'
-import backgroundBPJS from '../../../assets/image/bpjs.png'
+import backgroundAsuransi from '../../../assets/image/default.png'
+import { assets } from '../../../api';
 
 
 const ProfileAsuransi = () => {
   const [showModal, setShowModal] = useState(false);
   const [cardModal, setCardModal] = useState(false);
 
+  const backgroundBPJS = {uri:assets+"/assets/image/asuransi/bpjs"}
 
   const toggleModal = () => {
     setShowModal(! showModal);
@@ -215,7 +217,7 @@ const styles = StyleSheet.create({
     paddingBottom:8,
   },
   optionBtn:{
-    borderBottomWidth:0.2,
+    // borderBottomWidth:0.2,
     marginVertical:3,
     width:60,
     marginTop:1,

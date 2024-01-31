@@ -4,6 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const BASE_URL = 'https://mobile-api.pltucilacap.co.id/api';
+const assets = "https://mobile-api.pltucilacap.co.id";
+
 
 const Api = async (url, data, method = 'POST') => {
     try {
@@ -53,5 +55,7 @@ const Api = async (url, data, method = 'POST') => {
       throw error;
     }
   };
+
+ 
   
-  export { Api, ApiNative };
+  export { Api, ApiNative, assets };
