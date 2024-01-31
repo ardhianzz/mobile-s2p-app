@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     menuTitle: {
       textAlign: 'center',
       fontWeight: '800',
-      color:Colors.thema1.dark,
+      color:Colors.thema1.white,
     },
 });
 

@@ -1,14 +1,17 @@
-import { Alert, Image, StyleSheet, View } from 'react-native'
+import { Alert, Image, ImageBackground, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, Modal, TouchableOpacity } from 'react-native'
 import MenuIcon from './Icon/MenuIcon'
 import avatarUser from '../../assets/Icons/user.png'
 import { Colors } from '../../components/Thema'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import LinearGradient from 'react-native-linear-gradient'
 import iconSppd from '../../assets/Icons/travel.png'
 import iconProfile from '../../assets/Icons/verified.png'
-import iconSetting from '../../assets/Icons/Settings.png'
+import iconSetting from '../../assets/Icons/settingsWhite.png'
+import blueGold from '../../assets/image/bluegold2.jpg'
+
+
+
 
 const Dashboard = ({navigation}) => {
   const [openSettins, setOpenSettings] = useState(false); 
@@ -52,7 +55,7 @@ const Dashboard = ({navigation}) => {
 
   
   return (
-    <LinearGradient colors={['#0b1c4b', '#5272b6', '#c3d3f5', '#0b1c4b']} style={styles.container}>
+    <ImageBackground source={blueGold} style={{ height:"100%", width:"100%" }} resizeMethod='scale' resizeMode='cover'>
       <ScrollView>
           <View style={styles.background}>
               <View style={styles.topStatus}>
@@ -101,6 +104,38 @@ const Dashboard = ({navigation}) => {
                     <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
                   </TouchableOpacity>
 
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => actionMenu("Sppd")}>
+                    <MenuIcon title={"Perjalanan Dinas"} icon={iconSppd} />
+                  </TouchableOpacity>
+
               </View>
           </ScrollView>
           <View style={styles.divide}></View>
@@ -110,7 +145,7 @@ const Dashboard = ({navigation}) => {
             <Text style={styles.footerText}>IT Support @ PT Sumber Segara Primadaya</Text>
           </View>
       </ScrollView>
-    </LinearGradient>
+    </ImageBackground>
   )
 }
 
@@ -119,8 +154,8 @@ export default Dashboard
 const styles = StyleSheet.create({
   settingIcon:{
     width:30, 
-    height:30, 
-    backgroundColor:"white", 
+    height:30,
+    backgroundColor:"#090369", 
     borderRadius:10, 
     opacity:0.7
   },
@@ -166,7 +201,10 @@ const styles = StyleSheet.create({
     borderTopStartRadius:15,
     marginLeft:"70%",
     alignItems:"flex-end",
-    backgroundColor:"#00008057",
+    backgroundColor:"#7878f956",
+    borderWidth:0.6,
+    borderColor:"#FFD700"
+
   },
 
   info:{
@@ -203,7 +241,7 @@ const styles = StyleSheet.create({
  menuWrapper: {
    height: 250,
    paddingTop:10,
-   backgroundColor: '#e5e6fff4',
+   backgroundColor: '#56565649',
  },
 
  divide:{

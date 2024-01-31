@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/image/logo.png'
 import loading from '../../assets/Icons/loading.gif'
@@ -6,7 +6,7 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import { Api } from '../../api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Colors } from '../../components/Thema'
-import LinearGradient from 'react-native-linear-gradient';
+import blueGold from '../../assets/image/bluegold.jpg'
 
 
 const LoginPage = ({navigation}) => {
@@ -68,52 +68,52 @@ const LoginPage = ({navigation}) => {
   }
 
   return (
-      <LinearGradient colors={['#6187da', '#3b5998', '#142a68']} style={styles.container}>
-        <ScrollView>
-          <View style={styles.headerWrapper}>
-            <Image source={logo} style={styles.images} />
-            <Text style={styles.logoTitle} >PT SUMBER SEGARA PRIMADAYA</Text>
-            <Text style={{color:Colors.thema1.white,}}>By IT Support Jakarta</Text>
-          </View>
+    <ImageBackground source={blueGold} style={{ height:"100%", width:"100%" }} resizeMethod='scale' resizeMode='cover'>
+          <ScrollView>
+            <View style={styles.headerWrapper}>
+              <Image source={logo} style={styles.images} />
+              <Text style={styles.logoTitle} >PT SUMBER SEGARA PRIMADAYA</Text>
+              <Text style={{color:Colors.thema1.white,}}>By IT Support Jakarta</Text>
+            </View>
 
-          <View style={styles.formWrapper}>
-            <TextInput 
+            <View style={styles.formWrapper}>
+              <TextInput 
+                  style={styles.formInput} 
+                  placeholder='username' 
+                  value={formLogin.email}
+                  placeholderTextColor={"#015e8a"}  
+                  onChangeText={value => changeValue(value, 'email')}
+              />
+
+              <TextInput 
                 style={styles.formInput} 
-                placeholder='username' 
-                value={formLogin.email}
-                placeholderTextColor={"#015e8a"}  
-                onChangeText={value => changeValue(value, 'email')}
-            />
-
-            <TextInput 
-              style={styles.formInput} 
-              placeholder='password'
-              placeholderTextColor={"#015e8a"} 
-              secureTextEntry
-              value={formLogin.password} 
-              onChangeText={value => changeValue(value, 'password')} 
-            />
-            {statusLogin && <Text style={styles.error}> Username atau password salah</Text>}
-          </View>
+                placeholder='password'
+                placeholderTextColor={"#015e8a"} 
+                secureTextEntry
+                value={formLogin.password} 
+                onChangeText={value => changeValue(value, 'password')} 
+              />
+              {statusLogin && <Text style={styles.error}> Username atau password salah</Text>}
+            </View>
 
 
-          <View style={styles.submitWrapper}>
-            <TouchableOpacity onPressOut={actionLogin}>
-              <View style={styles.tombolSubmit}>
-                <Text style={styles.login}>LOGIN</Text>
-                { onLoading && <Image source={loading} style={styles.loadingImage}/>}
-              </View>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.submitWrapper}>
+              <TouchableOpacity onPressOut={actionLogin}>
+                <View style={styles.tombolSubmit}>
+                  <Text style={styles.login}>LOGIN</Text>
+                  { onLoading && <Image source={loading} style={styles.loadingImage}/>}
+                </View>
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.footer}>
-            <Text style={styles.footerFont}>
-              Head Office : Treasury Tower, 39th Floor. SCBD - Jakarta Selatan
-              Site Office : Jln. Lingkar Timur Desa Karang Kandri, Kecamatan Kesugihan. Cilacap - Jawa Tengah
-            </Text>
-          </View>
-        </ScrollView>
-    </LinearGradient>
+            <View style={styles.footer}>
+              <Text style={styles.footerFont}>
+                Head Office : Treasury Tower, 39th Floor. SCBD - Jakarta Selatan
+                Site Office : Jln. Lingkar Timur Desa Karang Kandri, Kecamatan Kesugihan. Cilacap - Jawa Tengah
+              </Text>
+            </View>
+          </ScrollView>
+    </ImageBackground>
 
   )
 }
@@ -161,11 +161,11 @@ const styles = StyleSheet.create({
     alignItems:"center",
     height:50,
 
-    shadowColor: '#000000', // Warna bayangan
-    shadowOffset: { width: 0, height: 2 }, // Offset bayangan
-    shadowOpacity: 0.9, // Opasitas bayangan
-    shadowRadius: 1, // Radius bayangan
-    elevation: 3, // Efek bayangan untuk Android
+    shadowColor: '#ffffff',
+    shadowOffset: { width: 10, height: -9 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    elevation: 1,
   },
   login:{
     color:"#f7fff0",
